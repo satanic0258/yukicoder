@@ -2,6 +2,7 @@
 using namespace std;
 
 int main(){
+  cin.tie(0);
   ios::sync_with_stdio(false);
   
   int n, H, M, h, m, total=0;
@@ -13,8 +14,9 @@ int main(){
     cin >> M; cin.ignore();
     cin >> h; cin.ignore();
     cin >> m;
-    if(M>m) total-=60;
-    total+=((h+24-H)%24)*60 + (m+60-M)%60;
+    M=H*60+M;
+    m=h*60+m;
+    total += (M<m) ? (m-M) : (m-M+1440);
   }
   cout << total << "\n";
 
